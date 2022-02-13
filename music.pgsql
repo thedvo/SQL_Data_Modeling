@@ -10,7 +10,7 @@ CREATE DATABASE music;
 CREATE TABLE artist
 (
   id SERIAL PRIMARY KEY,
-  name TEXT 
+  name TEXT NOT NULL
 );
 
 CREATE TABLE album
@@ -22,7 +22,7 @@ CREATE TABLE album
 CREATE TABLE producer
 (
   id SERIAL PRIMARY KEY,
-  name TEXT 
+  name TEXT NOT NULL
 );
 
 CREATE TABLE songs
