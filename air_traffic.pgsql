@@ -40,10 +40,10 @@ CREATE TABLE tickets
   departure TIMESTAMP NOT NULL,
   arrival TIMESTAMP NOT NULL,
   airline_id INTEGER REFERENCES airline ON DELETE SET NULL,
-  from_city_id INTEGER REFERENCES city ON DELETE SET NULL,
-  from_country_id INTEGER REFERENCES country ON DELETE SET NULL,
-  to_city_id INTEGER REFERENCES city ON DELETE SET NULL,
-  to_country_id INTEGER REFERENCES country ON DELETE SET NULL
+  departure_city_id INTEGER REFERENCES city ON DELETE SET NULL,
+  departure_country_id INTEGER REFERENCES country ON DELETE SET NULL,
+  arrival_city_id INTEGER REFERENCES city ON DELETE SET NULL,
+  arrival_country_id INTEGER REFERENCES country ON DELETE SET NULL
 );
 
 INSERT INTO passenger (first_name, last_name)
@@ -103,7 +103,7 @@ VALUES
 
 
 INSERT INTO tickets
-  (passenger_id, seat, departure, arrival, airline_id, from_city_id, from_country_id, to_city_id, to_country_id)
+  (passenger_id, seat, departure, arrival, airline_id, departure_city_id, departure_country_id, arrival_city_id, arrival_country_id)
 VALUES
   (1, '33B', '2018-04-08 09:00:00', '2018-04-08 12:00:00', 7, 18, 10 , 16 , 10),
   (2, '8A', '2018-12-19 12:45:00', '2018-12-19 16:15:00', 4, 17, 5, 8, 9),

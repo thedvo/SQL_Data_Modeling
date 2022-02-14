@@ -25,6 +25,12 @@ CREATE TABLE referees
     last_name TEXT NOT NULL
 );
 
+CREATE TABLE season
+(
+    id SERIAL PRIMARY KEY,
+    start_date DATE NOT NULL,
+    end_date DATE NOT NULL
+);
 
 CREATE TABLE matches
 (
@@ -32,14 +38,8 @@ CREATE TABLE matches
     team1_id INTEGER REFERENCES teams ON DELETE SET NULL,
     team2_id INTEGER REFERENCES teams ON DELETE SET NULL,
     referee_id INTEGER REFERENCES referees ON DELETE SET NULL,
-    match_date DATE NOT NULL
-);
-
-CREATE TABLE season
-(
-    id SERIAL PRIMARY KEY,
-    start_date DATE NOT NULL,
-    end_date DATE NOT NULL
+    match_date DATE NOT NULL,
+    season_id INTEGER REFERENCES season ON DELETE SET NULL
 );
 
 CREATE TABLE goals
@@ -65,11 +65,12 @@ VALUES
 INSERT INTO referees (first_name, last_name)
 VALUES ('Mike', 'Dean');
 
-INSERT INTO matches (team1_id, team2_id, referee_id, match_date)
-VALUES (1, 2, 1, '2021-11-22');
-
 INSERT INTO season (start_date, end_date)
 VALUES ('2021-09-12', '2022-05-23');
+
+INSERT INTO matches (team1_id, team2_id, referee_id, match_date, season_id)
+VALUES (1, 2, 1, '2021-11-22', 1);
+
 
 INSERT INTO goals (player_id, match_id)
 VALUES (1, 1);
